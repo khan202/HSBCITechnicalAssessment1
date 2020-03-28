@@ -28,7 +28,8 @@ object test1 {
     val colNames = data.columns.toSeq
    print( colNames)
     val data1 = data2.na.fill("qqq", colNames)
-
+    data1.explain()
+  //  data1.withColumn()
 
     val res1 = data1.groupBy("course").max("score")
     data1.join(res1, data1("course") === res1("course") && data1("score") === res1("max(score)"), "leftsemi").show()
